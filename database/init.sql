@@ -57,68 +57,68 @@ VALUES -- Income categories
     ('Groceries', 'expense', '🛒', '#f97316'),
     ('Rent', 'expense', '🏠', '#64748b');
 -- Insert sample transactions (only if table is empty)
--- INSERT IGNORE INTO transactions (
---         amount,
---         type,
---         category_id,
---         description,
---         transaction_date
---     )
--- VALUES (
---         5000.0,
---         'income',
---         1,
---         'Monthly salary',
---         '2024-03-01'
---     ),
---     (
---         150.0,
---         'expense',
---         7,
---         'Restaurant dinner',
---         '2024-03-02'
---     ),
---     (200.0, 'expense', 8, 'New clothes', '2024-03-03'),
---     (
---         1000.0,
---         'income',
---         2,
---         'Web development project',
---         '2024-03-04'
---     ),
---     (75.0, 'expense', 9, 'Uber rides', '2024-03-05'),
---     (
---         300.0,
---         'expense',
---         10,
---         'Concert tickets',
---         '2024-03-06'
---     ),
---     (
---         2000.0,
---         'income',
---         3,
---         'Stock dividends',
---         '2024-03-07'
---     ),
---     (
---         500.0,
---         'expense',
---         15,
---         'Grocery shopping',
---         '2024-03-08'
---     ),
---     (
---         1200.0,
---         'expense',
---         16,
---         'Monthly rent',
---         '2024-03-09'
---     ),
---     (
---         100.0,
---         'expense',
---         11,
---         'Electricity bill',
---         '2024-03-10'
---     );
+INSERT IGNORE INTO transactions (
+        amount,
+        type,
+        category_id,
+        description,
+        transaction_date
+    )
+VALUES (
+        5000.0,
+        'income',
+        1,
+        'Monthly salary',
+        '2024-03-01'
+    ),
+    (
+        150.0,
+        'expense',
+        7,
+        'Restaurant dinner',
+        '2024-03-02'
+    ),
+    (200.0, 'expense', 8, 'New clothes', '2024-03-03'),
+    (
+        1000.0,
+        'income',
+        2,
+        'Web development project',
+        '2024-03-04'
+    ),
+    (75.0, 'expense', 9, 'Uber rides', '2024-03-05'),
+    (
+        300.0,
+        'expense',
+        10,
+        'Concert tickets',
+        '2024-03-06'
+    ),
+    (
+        2000.0,
+        'income',
+        3,
+        'Stock dividends',
+        '2024-03-07'
+    ),
+    (
+        500.0,
+        'expense',
+        15,
+        'Grocery shopping',
+        '2024-03-08'
+    ),
+    (
+        1200.0,
+        'expense',
+        16,
+        'Monthly rent',
+        '2024-03-09'
+    ),
+    (
+        100.0,
+        'expense',
+        11,
+        'Electricity bill',
+        '2024-03-10'
+    );
