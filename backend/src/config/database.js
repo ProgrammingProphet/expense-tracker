@@ -69,6 +69,16 @@ const initializeDatabase = async () => {
     `);
     console.log("✅ Transactions table ready");
 
+    // Force reset if requested via environment variable
+    if (process.env.FORCE_DB_RESET === "true") {
+      console.log("⚠️ FORCE_DB_RESET is true. Clearing tables...");
+      await promisePool.query("SET FOREIGN_KEY_CHECKS = 0");
+      await promisePool.query("TRUNCATE transactions");
+      await promisePool.query("TRUNCATE categories");
+      await promisePool.query("SET FOREIGN_KEY_CHECKS = 1");
+      console.log("✅ Tables cleared for fresh initialization");
+    }
+
     // Insert default categories if none exist
     const [categories] = await promisePool.query(
       "SELECT COUNT(*) as count FROM categories",
@@ -76,24 +86,24 @@ const initializeDatabase = async () => {
     if (categories[0].count === 0) {
       const defaultCategories = [
         // Income categories
-        ["Salary", "income", "\uD83D\uDCB0", "#22c55e"], // 💰
-        ["Freelance", "income", "\uD83D\uDCBB", "#3b82f6"], // 💻
-        ["Investment", "income", "\uD83D\uDCC8", "#8b5cf6"], // 📈
-        ["Business", "income", "\uD83C\uDFE2", "#f97316"], // 🏢
-        ["Rental", "income", "\uD83C\uDFE0", "#14b8a6"], // 🏠
-        ["Other Income", "income", "\uD83C\uDF81", "#6b7280"], // 🎁
+        ["Salary", "income", "LuWallet", "#22c55e"],
+        ["Freelance", "income", "LuLaptop", "#3b82f6"],
+        ["Investment", "income", "LuTrendingUp", "#8b5cf6"],
+        ["Business", "income", "LuBuilding2", "#f97316"],
+        ["Rental", "income", "LuHome", "#14b8a6"],
+        ["Other Income", "income", "LuGift", "#6b7280"],
 
         // Expense categories
-        ["Food & Dining", "expense", "\uD83C\uDF54", "#ef4444"], // 🍔
-        ["Shopping", "expense", "\uD83D\uDECD\uFE0F", "#ec4899"], // 🛍️
-        ["Transportation", "expense", "\uD83D\uDE97", "#eab308"], // 🚗
-        ["Entertainment", "expense", "\uD83C\uDFAC", "#8b5cf6"], // 🎬
-        ["Bills & Utilities", "expense", "\uD83D\uDCA1", "#6b7280"], // 💡
-        ["Healthcare", "expense", "\uD83C\uDFE5", "#06b6d4"], // 🏥
-        ["Education", "expense", "\uD83D\uDCDA", "#14b8a6"], // 📚
-        ["Travel", "expense", "\u2708\uFE0F", "#3b82f6"], // ✈️
-        ["Groceries", "expense", "\uD83D\uDED2", "#f97316"], // 🛒
-        ["Rent", "expense", "\uD83C\uDFE0", "#64748b"], // 🏠
+        ["Food & Dining", "expense", "LuUtensils", "#ef4444"],
+        ["Shopping", "expense", "LuShoppingBag", "#ec4899"],
+        ["Transportation", "expense", "LuCar", "#eab308"],
+        ["Entertainment", "expense", "LuClapperboard", "#8b5cf6"],
+        ["Bills & Utilities", "expense", "LuLightbulb", "#6b7280"],
+        ["Healthcare", "expense", "LuStethoscope", "#06b6d4"],
+        ["Education", "expense", "LuGraduationCap", "#14b8a6"],
+        ["Travel", "expense", "LuPlane", "#3b82f6"],
+        ["Groceries", "expense", "LuShoppingCart", "#f97316"],
+        ["Rent", "expense", "LuHome", "#64748b"],
       ];
 
       for (const cat of defaultCategories) {

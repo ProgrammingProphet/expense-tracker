@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { transactionsAPI, categoriesAPI } from '../services/api';
 import { formatCurrency, formatDate } from '../utils/formatters';
 import { toast } from 'react-toastify';
+import CategoryIcon from './CategoryIcon';
 
 function Transactions({ onTransactionUpdate }) {
   const [transactions, setTransactions] = useState([]);
@@ -119,10 +120,6 @@ function Transactions({ onTransactionUpdate }) {
     return true;
   });
 
-  const getCategoryIcon = (transaction) => {
-    return transaction.category_icon || '💳';
-  };
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -215,7 +212,7 @@ function Transactions({ onTransactionUpdate }) {
                     .filter(c => c.type === formData.type)
                     .map(category => (
                       <option key={category.id} value={category.id}>
-                        {category.icon} {category.name}
+                        {category.name}
                       </option>
                     ))
                   }
@@ -280,8 +277,12 @@ function Transactions({ onTransactionUpdate }) {
                 <div key={transaction.id} className="p-4 hover:bg-gray-50 transition-colors">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl">
-                        {getCategoryIcon(transaction)}
+                      <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                        <CategoryIcon 
+                          iconName={transaction.category_icon} 
+                          size={24} 
+                          color={transaction.category_color} 
+                        />
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800">

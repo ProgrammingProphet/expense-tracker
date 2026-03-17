@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { categoriesAPI } from '../services/api';
 import { toast } from 'react-toastify';
+import CategoryIcon, { AVAILABLE_ICONS } from './CategoryIcon';
 
 const COLORS = [
   '#ef4444', '#f97316', '#eab308', '#22c55e', 
   '#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4',
   '#14b8a6', '#6b7280', '#a855f7', '#6366f1'
-];
-
-const ICONS = [
-  '💰', '💸', '🍔', '🛍️', '🚗', '🎬', '💡', '🏥', 
-  '📚', '✈️', '🏠', '🎁', '💻', '📈', '🏢', '🛒'
 ];
 
 function Categories() {
@@ -23,7 +19,7 @@ function Categories() {
   const [formData, setFormData] = useState({
     name: '',
     type: 'expense',
-    icon: '📦',
+    icon: 'LuPackage',
     color: '#64748b'
   });
 
@@ -66,7 +62,7 @@ function Categories() {
       setFormData({
         name: '',
         type: 'expense',
-        icon: '📦',
+        icon: 'LuPackage',
         color: '#64748b'
       });
       
@@ -115,7 +111,7 @@ function Categories() {
             setFormData({
               name: '',
               type: 'expense',
-              icon: '📦',
+              icon: 'LuPackage',
               color: '#64748b'
             });
             setShowForm(true);
@@ -195,18 +191,18 @@ function Categories() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
-                <div className="grid grid-cols-8 gap-2 max-h-48 overflow-y-auto p-2 border border-gray-300 rounded-lg">
-                  {ICONS.map(icon => (
+                <div className="grid grid-cols-6 gap-2 max-h-48 overflow-y-auto p-2 border border-gray-300 rounded-lg">
+                  {AVAILABLE_ICONS.map(icon => (
                     <button
-                      key={icon}
+                      key={icon.key}
                       type="button"
-                      onClick={() => setFormData({...formData, icon})}
-                      className={`w-10 h-10 text-2xl flex items-center justify-center rounded-lg ${
-                        formData.icon === icon ? 'bg-blue-100 ring-2 ring-blue-500' : 'hover:bg-gray-100'
+                      onClick={() => setFormData({...formData, icon: icon.key})}
+                      className={`w-10 h-10 flex items-center justify-center rounded-lg ${
+                        formData.icon === icon.key ? 'bg-blue-100 ring-2 ring-blue-500' : 'hover:bg-gray-100'
                       }`}
+                      title={icon.name}
                     >
-                      {icon}
+                      <CategoryIcon iconName={icon.key} size={20} />
                     </button>
                   ))}
                 </div>
@@ -267,7 +263,9 @@ function Categories() {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <span className="text-3xl">{category.icon}</span>
+                  <div className="p-2 bg-gray-50 rounded-lg">
+                    <CategoryIcon iconName={category.icon} size={28} color={category.color} />
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">{category.name}</h3>
                     <span className={`text-xs px-2 py-1 rounded-full ${

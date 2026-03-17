@@ -92,6 +92,7 @@ jobs:
             echo "DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}" > .env
             echo "DOCKER_IMAGE_TAG=latest" >> .env
             echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> .env
+            echo "FORCE_DB_RESET=true" >> .env
 
             # Pull new images
             docker compose pull

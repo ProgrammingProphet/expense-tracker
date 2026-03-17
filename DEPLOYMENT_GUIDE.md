@@ -95,6 +95,7 @@ If you wish to deploy manually without CI/CD, follow these steps on your Ubuntu 
 - **Icons not showing?**: Ensure `database/init.sql` and the database volume use `utf8mb4`.
 - **CORS Errors?**: Check Nginx configuration in `frontend/nginx.conf`.
 - **Connection Refused?**: Verify the `VITE_API_URL` environment variable points to `/api`.
+- **Garbled Icons?**: If icons show as `ðŸ’°`, set `FORCE_DB_RESET=true` in your `.env` and restart the backend. This will clear the corrupted data and re-seed with clean Unicode. **(Warning: This deletes all transaction history!)**
 
 ---
 *Prepared for: College Project Documentation*

@@ -8,6 +8,7 @@ import {
 import { analyticsAPI, transactionsAPI } from '../services/api';
 import { formatCurrency, getMonthName } from '../utils/formatters';
 import { toast } from 'react-toastify';
+import CategoryIcon from './CategoryIcon';
 
 function Reports() {
   const [loading, setLoading] = useState(true);
@@ -86,17 +87,32 @@ function Reports() {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <p className="text-sm text-gray-600">Total Income (Year)</p>
-          <p className="text-2xl font-bold text-green-600">{formatCurrency(totalIncome)}</p>
+        <div className="bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+          <div>
+            <p className="text-sm text-gray-600">Total Income (Year)</p>
+            <p className="text-2xl font-bold text-green-600">{formatCurrency(totalIncome)}</p>
+          </div>
+          <div className="p-3 bg-green-100 rounded-full">
+            <CategoryIcon iconName="LuTrendingUp" size={24} color="#22c55e" />
+          </div>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <p className="text-sm text-gray-600">Total Expense (Year)</p>
-          <p className="text-2xl font-bold text-red-600">{formatCurrency(totalExpense)}</p>
+        <div className="bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+          <div>
+            <p className="text-sm text-gray-600">Total Expense (Year)</p>
+            <p className="text-2xl font-bold text-red-600">{formatCurrency(totalExpense)}</p>
+          </div>
+          <div className="p-3 bg-red-100 rounded-full">
+            <CategoryIcon iconName="LuTrendingDown" size={24} color="#ef4444" />
+          </div>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <p className="text-sm text-gray-600">Average Monthly Expense</p>
-          <p className="text-2xl font-bold text-blue-600">{formatCurrency(averageMonthly)}</p>
+        <div className="bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+          <div>
+            <p className="text-sm text-gray-600">Average Monthly Expense</p>
+            <p className="text-2xl font-bold text-blue-600">{formatCurrency(averageMonthly)}</p>
+          </div>
+          <div className="p-3 bg-blue-100 rounded-full">
+            <CategoryIcon iconName="LuCalculator" size={24} color="#3b82f6" />
+          </div>
         </div>
       </div>
 
@@ -179,7 +195,8 @@ function Reports() {
               </>
             ) : (
               <>
-                <span>📥</span> Export {selectedYear} Data
+                <CategoryIcon iconName="LuDownload" size={18} />
+                Export {selectedYear} Data
               </>
             )}
           </button>

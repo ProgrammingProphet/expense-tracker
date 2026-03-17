@@ -8,6 +8,7 @@ import {
 import { analyticsAPI } from '../services/api';
 import { formatCurrency, getMonthName, formatDate } from '../utils/formatters';
 import { toast } from 'react-toastify';
+import CategoryIcon from './CategoryIcon';
 
 function Dashboard({ refreshTrigger }) {
   const [loading, setLoading] = useState(true);
@@ -94,7 +95,7 @@ function Dashboard({ refreshTrigger }) {
               </p>
             </div>
             <div className="p-3 bg-green-100 rounded-full">
-              <span className="text-2xl">💰</span>
+              <CategoryIcon iconName="LuTrendingUp" size={24} color="#22c55e" />
             </div>
           </div>
           <div className="mt-4 text-xs text-green-600">
@@ -112,7 +113,7 @@ function Dashboard({ refreshTrigger }) {
               </p>
             </div>
             <div className="p-3 bg-red-100 rounded-full">
-              <span className="text-2xl">💸</span>
+              <CategoryIcon iconName="LuTrendingDown" size={24} color="#ef4444" />
             </div>
           </div>
           <div className="mt-4 text-xs text-red-600">
@@ -130,7 +131,7 @@ function Dashboard({ refreshTrigger }) {
               </p>
             </div>
             <div className="p-3 bg-blue-100 rounded-full">
-              <span className="text-2xl">💎</span>
+              <CategoryIcon iconName="LuWallet" size={24} color="#3b82f6" />
             </div>
           </div>
         </div>
@@ -145,7 +146,7 @@ function Dashboard({ refreshTrigger }) {
               </p>
             </div>
             <div className="p-3 bg-purple-100 rounded-full">
-              <span className="text-2xl">📊</span>
+              <CategoryIcon iconName="LuLayoutDashboard" size={24} color="#8b5cf6" />
             </div>
           </div>
         </div>
@@ -214,7 +215,13 @@ function Dashboard({ refreshTrigger }) {
             {summaryData.recent_transactions.map((transaction) => (
               <div key={transaction.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <span className="text-2xl">{transaction.category_icon || '💳'}</span>
+                  <div className="p-2 bg-white rounded-lg shadow-sm">
+                    <CategoryIcon 
+                      iconName={transaction.category_icon} 
+                      size={20} 
+                      color={transaction.category_color} 
+                    />
+                  </div>
                   <div>
                     <p className="font-medium text-gray-800">{transaction.category_name || 'Uncategorized'}</p>
                     <p className="text-sm text-gray-500">{transaction.description || 'No description'}</p>
