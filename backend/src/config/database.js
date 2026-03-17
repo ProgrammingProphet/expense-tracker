@@ -91,7 +91,7 @@ const initializeDatabase = async () => {
         ["Bills & Utilities", "expense", "\uD83D\uDCA1", "#6b7280"], // 💡
         ["Healthcare", "expense", "\uD83C\uDFE5", "#06b6d4"], // 🏥
         ["Education", "expense", "\uD83D\uDCDA", "#14b8a6"], // 📚
-        ["Travel", "expense", "\uD83D\uDE88", "#3b82f6"], // ✈️
+        ["Travel", "expense", "\u2708\uFE0F", "#3b82f6"], // ✈️
         ["Groceries", "expense", "\uD83D\uDED2", "#f97316"], // 🛒
         ["Rent", "expense", "\uD83C\uDFE0", "#64748b"], // 🏠
       ];
