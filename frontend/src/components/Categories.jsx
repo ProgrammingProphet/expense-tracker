@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { categoriesAPI } from '../services/api';
 import { toast } from 'react-toastify';
-import CategoryIcon, { AVAILABLE_ICONS } from './CategoryIcon';
+import CategoryIcon from './CategoryIcon';
+import { AVAILABLE_ICONS } from '../utils/constants';
 
 const COLORS = [
   '#ef4444', '#f97316', '#eab308', '#22c55e', 

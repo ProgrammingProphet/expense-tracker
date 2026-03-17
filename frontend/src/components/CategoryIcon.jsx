@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as LuIcons from 'react-icons/lu';
 
 const CategoryIcon = ({ iconName, className = '', color = 'currentColor', size = 24 }) => {
@@ -26,33 +25,4 @@ const CategoryIcon = ({ iconName, className = '', color = 'currentColor', size =
   return <LuIcons.LuPackage className={className} size={size} color={color} />;
 };
 
-CategoryIcon.propTypes = {
-  iconName: PropTypes.string,
-  className: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number
-};
-
 export default CategoryIcon;
-
-// List of available icons for the selector
-export const AVAILABLE_ICONS = [
-  { name: 'Salary/Wallet', key: 'LuWallet' },
-  { name: 'Income/Trending', key: 'LuTrendingUp' },
-  { name: 'Business', key: 'LuBuilding2' },
-  { name: 'Freelance/Laptop', key: 'LuLaptop' },
-  { name: 'Gift', key: 'LuGift' },
-  { name: 'Food/Dining', key: 'LuUtensils' },
-  { name: 'ShoppingBag', key: 'LuShoppingBag' },
-  { name: 'ShoppingCart', key: 'LuShoppingCart' },
-  { name: 'Transportation', key: 'LuCar' },
-  { name: 'Entertainment', key: 'LuClapperboard' },
-  { name: 'Utilities', key: 'LuLightbulb' },
-  { name: 'Healthcare', key: 'LuStethoscope' },
-  { name: 'Education', key: 'LuGraduationCap' },
-  { name: 'Travel', key: 'LuPlane' },
-  { name: 'Home/Rent', key: 'LuHome' },
-  { name: 'Savings', key: 'LuPiggyBank' },
-  { name: 'Taxes', key: 'LuFileText' },
-  { name: 'CreditCard', key: 'LuCreditCard' }
-];
